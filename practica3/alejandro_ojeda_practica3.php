@@ -1,4 +1,6 @@
 <?php
+use Hobby\Hobby;
+use IAcciones\IAcciones;
 use Libro\Libro;
 include 'clases\Libro.php';
 use Ayuda\Ayuda;
@@ -62,3 +64,32 @@ echo $libro1 -> __toString();
  /*L) Resulta que tienes un segundo hobby. Créala, heredará de la clase abstracta. Necesitas contabilizar 
  el tiempo dedicado a cada uno de ellos con métodos que te permitan establecer un tiempo máximo y mínimo.
 Emplea alguna estructura que te permita modularizarlo e implementarlo.*/
+
+/*LL) Crea un nuevo hobby, el tercero, mediante una clase anónima, 
+sin perder la herencia, interfaces y estructuras esperadas. Es decir,
+ instancia un objeto asignándole una clase que contenga al vuelo todas las estructuras.*/
+
+var_dump(
+    new class extends Hobby implements IAcciones{
+        private $nombre;
+        public function iniciar()
+        {
+            echo "Iniciando tu hobby: " . $this->getNombre();
+        }
+        public function detener()
+        {
+            echo "Deteniendo tu hobby: " . $this->getNombre();
+        }
+        public function actualizar(array $a)
+        {
+            echo "Actualizado hobby: " . $this->getNombre();
+        }
+        public function setNombre($nombre){
+            $this -> nombre = $nombre;
+        }
+        public function getNombre(): string{
+            return $this -> nombre;
+        }
+    }
+    
+);
