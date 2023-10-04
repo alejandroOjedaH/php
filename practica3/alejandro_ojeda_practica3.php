@@ -52,6 +52,10 @@ foreach ($array_global as $clave => $valor) {
 /*H) Crea el constructor y destructor de tu hobby e implementa el método mágico __toString()*/
 echo $libro1 -> __toString();
 
+/*I) Crea métodos public, private y protected en tu hobby que tengan sentido. 
+Para ello genera una subclase de la clase si es necesario.*/
+ 
+
 /*J) Genera una constante en tu clase (con sentido) y un atributo estático de tipo int. Comprueba que
  es estático con dos referencias que manipulen y muestren el valor de dicha variable estática 
  (referencia desde clase y/o desde un método estático)*/

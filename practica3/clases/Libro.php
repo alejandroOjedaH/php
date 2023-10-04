@@ -91,5 +91,17 @@ class Libro extends Hobby implements IAcciones
     /*J) Genera una constante en tu clase (con sentido) y un atributo estático de tipo int. 
     Comprueba que es estático con dos referencias que manipulen y muestren el valor 
     de dicha variable estática (referencia desde clase y/o desde un método estático)*/
-
+    public function libro_completo($numero){
+        $leido = $this -> regla_tres($numero, $this ->getNumeroPaginas());
+        $porcentaje = $this -> formatear_porcentaje($leido);
+        echo "Has leido un "+$porcentaje+" del libro";
+    }
+    private function regla_tres($numero,$total){
+        $aux = $total/100;
+        $aux = $aux*$numero;
+        return $aux;
+    }
+    protected function formatear_porcentaje($numero){
+        return $numero+"%";
+    }
 }
