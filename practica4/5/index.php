@@ -1,17 +1,11 @@
 <?php
-$nombre_lib;
-$genero_lib;
-$num_pag_lib;
-$precio_lib;
-if(isset($_POST["nombre"])){
-    $nombre_lib = $_POST(["nombre"]);
-    $genero_lib = $_POST(["genero"]);
-    $num_pag_lib = $_POST(["num_paginas"]);
-    $precio_lib = $_POST(["precio"]);
-    echo $nombre_lib;
+$datos;
+if(isset($_REQUEST['datos'])){
+    echo $_REQUEST['datos'];
 }
 ?>
-
+<!--5) Modifica el formulario para que gestione la lógica en distintos scripts (origen y destino distintos). 
+Deberá retornar igualmente al script origen con el mensaje establecido en 3).-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,17 +16,17 @@ if(isset($_POST["nombre"])){
 <body>
     
     <h1>Libros:</h1>
-    <form method="post">
+    <form action="./php/datos.php" method="get">
         <label for="nombre">Nombre del libro:</label>
         <input type="text" id="nombre" name="nombre" value="El nombre del viento"><br>
         <label for="genero">Genero del libro:</label>
-        <input type="text" id="genero" name="genero" value="Aventuras"><br>
+        <input type="text" id="genero" name="genero"><br>
         <label for="num_paginas">Numero de paginas del libro:</label>
         <input type="number" id="num_paginas" name="num_paginas" value="100"><br>
         <label for="precio">Precio del libro:</label>
         <input type="number" id="precio" name="precio" value="20"><br>
         <input type="submit" name="aceptar" value="Aceptar">
+        <input type="hidden" id="validar" name="validar" value="validar">
     </form>
-    
 </body>
 </html>
