@@ -4,8 +4,9 @@ $genero_lib;
 $num_pag_lib;
 $precio_lib;
 $archivo_lib;
-/*6) Modifica la validación del formulario para que sólo se admita un envío de tipo POST.
- Investiga la variable superglobal $_SERVER["REQUEST_METHOD"]*/
+/*8)  Modifica 8 y guarda sólo el archivo si no existe 
+previamente en el directorio de PDFs. Usa la función file_exists(); Necesita un path absoluto, 
+tendrás que construirlo con la variable mágica __FILE__ y la función dirname.*/
 if(isset($_POST["validar"])){
     echo $_SERVER['REQUEST_METHOD']."<br/>";
     $no_recibidos=[];
@@ -54,10 +55,6 @@ function comprobar_archivo($archivo){
     return true;
 }
 ?>
-<!--7) Incluye un campo de tipo file para que puedas subir una fotografía del hobby. 
-Sólo podrá ser <=2 MegaBytes, y tendrás que guardarla en un directorio específico. 
-Debes validar que el archivo, además, sólo sea un PDF, verificando a la vez 
-que la extensión del archivo es '.pdf' y que el tipo de archivo también.-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -82,6 +79,5 @@ que la extensión del archivo es '.pdf' y que el tipo de archivo también.-->
         <input type="submit" name="aceptar" value="Aceptar">
         <input type="hidden" id="validar" name="validar" value="validar">
     </form>
-    
 </body>
 </html>
