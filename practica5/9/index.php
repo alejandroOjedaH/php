@@ -1,36 +1,49 @@
 <?php
+use Libro\Libro;
+include 'clases\Libro.php';
 $nombre_lib;
 $genero_lib;
 $num_pag_lib;
 $precio_lib;
 $archivo_lib;
-/*6) Modifica la validación del formulario para que sólo se admita un envío de tipo POST.
- Investiga la variable superglobal $_SERVER["REQUEST_METHOD"]*/
+$libro = new Libro();
+/*9) Modifica el script destino para que, al recibir los parámetros el script destino, 
+los almacene en un objeto de tu clase Hobby. Agrega el atributo fotografía
+ "mágicamente", que almacenará el path de la imagen. La clase estará definida en un 
+ directorio aparte, realiza las inclusiones y llamadas respectivas.*/
 if(isset($_POST["validar"])){
     echo $_SERVER['REQUEST_METHOD']."<br/>";
     $no_recibidos=[];
     if(!empty($_POST["nombre"])){
         $nombre_lib = $_POST["nombre"];
+        $libro->nombre =$nombre_lib;
     }else{
         array_push($no_recibidos,"nombre");
     }
     if(!empty($_POST["genero"])){
         $genero_lib = $_POST["genero"];
+        $libro->genero =$genero_lib;
     }else{
         array_push($no_recibidos,"genero");
     }
     if(!empty($_POST["num_paginas"])){
         $num_pag_lib = intval($_POST["num_paginas"],10);
+        $libro->numero_paginas =$num_pag_lib;
     }else{
         array_push($no_recibidos,"numero de paginas");
     }
     if(!empty($_POST["precio"])){
         $precio_lib = floatval($_POST["precio"]);
+        $libro->precio =$precio_lib;
     }else{
         array_push($no_recibidos,"precio");
     }
     if(!empty($_FILES["archivo"]) && comprobarArchivo($_FILES["archivo"])){
         $archivo_lib = $_FILES["archivo"];
+        $libro->foto =$archivo_lib;
+        if(!file_exists($archivo_lib["name"])){
+            move_uploaded_file($archivo_lib["tmp_name"],$archivo_lib["name"]);
+        }
     }else{
         array_push($no_recibidos,"archivo");
     }
@@ -42,6 +55,7 @@ if(isset($_POST["validar"])){
     }else{
         echo "Se han recibido todos los campos <br/>";
     }
+    var_dump($libro);
 }
 function comprobarArchivo($archivo){
     $regex = "/\.(jpg|png|gif)$/i";
@@ -54,10 +68,6 @@ function comprobarArchivo($archivo){
     return true;
 }
 ?>
-<!--7) Incluye un campo de tipo file para que puedas subir una fotografía del hobby. 
-Sólo podrá ser <=2 MegaBytes, y tendrás que guardarla en un directorio específico. 
-Debes validar que el archivo, además, sólo sea un PDF, verificando a la vez 
-que la extensión del archivo es '.pdf' y que el tipo de archivo también.-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
