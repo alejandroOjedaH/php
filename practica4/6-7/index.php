@@ -29,7 +29,11 @@ if(isset($_POST["validar"])){
     }else{
         array_push($no_recibidos,"precio");
     }
+<<<<<<< HEAD
     if(!empty($_FILES["archivo"] && comprobar_archivo($_FILES["archivo"]))){
+=======
+    if(!empty($_FILES["archivo"]) && comprobarArchivo($_FILES["archivo"])){
+>>>>>>> e02ae8daf3d4c43231803576470a08eb5400eb6d
         $archivo_lib = $_FILES["archivo"];
     }else{
         array_push($no_recibidos,"archivo");
@@ -43,12 +47,21 @@ if(isset($_POST["validar"])){
         echo "Se han recibido todos los campos <br/>";
     }
 }
+<<<<<<< HEAD
 function comprobar_archivo($archivo){
     $pattern = "/\.(jpg|png|gif|jpeg)$/";
     if(!preg_match($pattern,$archivo["name"])){
         return false;
     }
     if($archivo["size"]>(2*1024*1024*8)){
+=======
+function comprobarArchivo($archivo){
+    $regex = "/\.(jpg|png|gif)$/i";
+    if(!preg_match($regex,$archivo["name"])){
+        return false;
+    }
+    if($archivo["size"]>2*1024*1024){
+>>>>>>> e02ae8daf3d4c43231803576470a08eb5400eb6d
         return false;
     }
     return true;
@@ -78,7 +91,11 @@ que la extensión del archivo es '.pdf' y que el tipo de archivo también.-->
         <label for="precio">Precio del libro:</label>
         <input type="number" id="precio" name="precio" value="20"><br>
         <label for="archivo">Archivo pdf:</label>
+<<<<<<< HEAD
         <input type="file" id="archivo" name="archivo" accept="image/jpg, image/png, image/gif, image/jpeg"><br>
+=======
+        <input type="file" id="archivo" name="archivo" accept="image/*"><br>
+>>>>>>> e02ae8daf3d4c43231803576470a08eb5400eb6d
         <input type="submit" name="aceptar" value="Aceptar">
         <input type="hidden" id="validar" name="validar" value="validar">
     </form>

@@ -1,51 +1,49 @@
 <?php
+use Libro\Libro;
+include 'clases\Libro.php';
 $nombre_lib;
 $genero_lib;
 $num_pag_lib;
 $precio_lib;
 $archivo_lib;
-<<<<<<< HEAD
-/*8)  Modifica 8 y guarda sólo el archivo si no existe 
-previamente en el directorio de PDFs. Usa la función file_exists(); Necesita un path absoluto, 
-tendrás que construirlo con la variable mágica __FILE__ y la función dirname.*/
-=======
-/*8)  Modifica 8 y guarda sólo el archivo si no existe previamente en el directorio de PDFs.
- Usa la función file_exists(); Necesita un path absoluto, tendrás que construirlo con 
- la variable mágica __FILE__ y la función dirname.*/
->>>>>>> e02ae8daf3d4c43231803576470a08eb5400eb6d
+$libro = new Libro();
+/*9) Modifica el script destino para que, al recibir los parámetros el script destino, 
+los almacene en un objeto de tu clase Hobby. Agrega el atributo fotografía
+ "mágicamente", que almacenará el path de la imagen. La clase estará definida en un 
+ directorio aparte, realiza las inclusiones y llamadas respectivas.*/
 if(isset($_POST["validar"])){
     echo $_SERVER['REQUEST_METHOD']."<br/>";
     $no_recibidos=[];
     if(!empty($_POST["nombre"])){
         $nombre_lib = $_POST["nombre"];
+        $libro->nombre =$nombre_lib;
     }else{
         array_push($no_recibidos,"nombre");
     }
     if(!empty($_POST["genero"])){
         $genero_lib = $_POST["genero"];
+        $libro->genero =$genero_lib;
     }else{
         array_push($no_recibidos,"genero");
     }
     if(!empty($_POST["num_paginas"])){
         $num_pag_lib = intval($_POST["num_paginas"],10);
+        $libro->numero_paginas =$num_pag_lib;
     }else{
         array_push($no_recibidos,"numero de paginas");
     }
     if(!empty($_POST["precio"])){
         $precio_lib = floatval($_POST["precio"]);
+        $libro->precio =$precio_lib;
     }else{
         array_push($no_recibidos,"precio");
     }
-<<<<<<< HEAD
-    if(!empty($_FILES["archivo"] && comprobar_archivo($_FILES["archivo"]))){
-        $archivo_lib = $_FILES["archivo"];
-=======
     if(!empty($_FILES["archivo"]) && comprobarArchivo($_FILES["archivo"])){
         $archivo_lib = $_FILES["archivo"];
+        $libro->foto =$archivo_lib;
         if(!file_exists($archivo_lib["name"])){
             move_uploaded_file($archivo_lib["tmp_name"],$archivo_lib["name"]);
         }
->>>>>>> e02ae8daf3d4c43231803576470a08eb5400eb6d
     }else{
         array_push($no_recibidos,"archivo");
     }
@@ -57,22 +55,14 @@ if(isset($_POST["validar"])){
     }else{
         echo "Se han recibido todos los campos <br/>";
     }
+    var_dump($libro);
 }
-<<<<<<< HEAD
-function comprobar_archivo($archivo){
-    $pattern = "/\.(jpg|png|gif|jpeg)$/";
-    if(!preg_match($pattern,$archivo["name"])){
-        return false;
-    }
-    if($archivo["size"]>(2*1024*1024*8)){
-=======
 function comprobarArchivo($archivo){
     $regex = "/\.(jpg|png|gif)$/i";
     if(!preg_match($regex,$archivo["name"])){
         return false;
     }
     if($archivo["size"]>2*1024*1024){
->>>>>>> e02ae8daf3d4c43231803576470a08eb5400eb6d
         return false;
     }
     return true;
@@ -98,17 +88,10 @@ function comprobarArchivo($archivo){
         <label for="precio">Precio del libro:</label>
         <input type="number" id="precio" name="precio" value="20"><br>
         <label for="archivo">Archivo pdf:</label>
-<<<<<<< HEAD
-        <input type="file" id="archivo" name="archivo" accept="image/jpg, image/png, image/gif, image/jpeg"><br>
-        <input type="submit" name="aceptar" value="Aceptar">
-        <input type="hidden" id="validar" name="validar" value="validar">
-    </form>
-=======
         <input type="file" id="archivo" name="archivo" accept="image/*"><br>
         <input type="submit" name="aceptar" value="Aceptar">
         <input type="hidden" id="validar" name="validar" value="validar">
     </form>
     
->>>>>>> e02ae8daf3d4c43231803576470a08eb5400eb6d
 </body>
 </html>

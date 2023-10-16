@@ -4,15 +4,8 @@ $genero_lib;
 $num_pag_lib;
 $precio_lib;
 $archivo_lib;
-<<<<<<< HEAD
-/*8)  Modifica 8 y guarda sólo el archivo si no existe 
-previamente en el directorio de PDFs. Usa la función file_exists(); Necesita un path absoluto, 
-tendrás que construirlo con la variable mágica __FILE__ y la función dirname.*/
-=======
-/*8)  Modifica 8 y guarda sólo el archivo si no existe previamente en el directorio de PDFs.
- Usa la función file_exists(); Necesita un path absoluto, tendrás que construirlo con 
- la variable mágica __FILE__ y la función dirname.*/
->>>>>>> e02ae8daf3d4c43231803576470a08eb5400eb6d
+/*6) Modifica la validación del formulario para que sólo se admita un envío de tipo POST.
+ Investiga la variable superglobal $_SERVER["REQUEST_METHOD"]*/
 if(isset($_POST["validar"])){
     echo $_SERVER['REQUEST_METHOD']."<br/>";
     $no_recibidos=[];
@@ -36,16 +29,8 @@ if(isset($_POST["validar"])){
     }else{
         array_push($no_recibidos,"precio");
     }
-<<<<<<< HEAD
-    if(!empty($_FILES["archivo"] && comprobar_archivo($_FILES["archivo"]))){
-        $archivo_lib = $_FILES["archivo"];
-=======
     if(!empty($_FILES["archivo"]) && comprobarArchivo($_FILES["archivo"])){
         $archivo_lib = $_FILES["archivo"];
-        if(!file_exists($archivo_lib["name"])){
-            move_uploaded_file($archivo_lib["tmp_name"],$archivo_lib["name"]);
-        }
->>>>>>> e02ae8daf3d4c43231803576470a08eb5400eb6d
     }else{
         array_push($no_recibidos,"archivo");
     }
@@ -58,26 +43,21 @@ if(isset($_POST["validar"])){
         echo "Se han recibido todos los campos <br/>";
     }
 }
-<<<<<<< HEAD
-function comprobar_archivo($archivo){
-    $pattern = "/\.(jpg|png|gif|jpeg)$/";
-    if(!preg_match($pattern,$archivo["name"])){
-        return false;
-    }
-    if($archivo["size"]>(2*1024*1024*8)){
-=======
 function comprobarArchivo($archivo){
     $regex = "/\.(jpg|png|gif)$/i";
     if(!preg_match($regex,$archivo["name"])){
         return false;
     }
     if($archivo["size"]>2*1024*1024){
->>>>>>> e02ae8daf3d4c43231803576470a08eb5400eb6d
         return false;
     }
     return true;
 }
 ?>
+<!--7) Incluye un campo de tipo file para que puedas subir una fotografía del hobby. 
+Sólo podrá ser <=2 MegaBytes, y tendrás que guardarla en un directorio específico. 
+Debes validar que el archivo, además, sólo sea un PDF, verificando a la vez 
+que la extensión del archivo es '.pdf' y que el tipo de archivo también.-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -98,17 +78,10 @@ function comprobarArchivo($archivo){
         <label for="precio">Precio del libro:</label>
         <input type="number" id="precio" name="precio" value="20"><br>
         <label for="archivo">Archivo pdf:</label>
-<<<<<<< HEAD
-        <input type="file" id="archivo" name="archivo" accept="image/jpg, image/png, image/gif, image/jpeg"><br>
-        <input type="submit" name="aceptar" value="Aceptar">
-        <input type="hidden" id="validar" name="validar" value="validar">
-    </form>
-=======
         <input type="file" id="archivo" name="archivo" accept="image/*"><br>
         <input type="submit" name="aceptar" value="Aceptar">
         <input type="hidden" id="validar" name="validar" value="validar">
     </form>
     
->>>>>>> e02ae8daf3d4c43231803576470a08eb5400eb6d
 </body>
 </html>
