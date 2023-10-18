@@ -101,14 +101,31 @@ if(isset($_REQUEST["ejercicio9"])){
 }
 /*10) Valida el DNI (8 dígitos más un carácter alfabético):
 Se divide el número entre 23 y el resto se sustituye por una letra 
-que se determina por inspección mediante la siguiente tabla:*/
+que se determina por inspección mediante la siguiente tabla:
+*/
 if(isset($_REQUEST["ejercicio10"])){
-    $regex = "/^[0-9]+[\*\/\+\-][0-9]+$/i";
-    if(preg_match($regex,$_REQUEST["ejercicio10"])){
-        echo "Ejercicio 10 es verdadero<br/>";
+    $regex = "/^[0-9]{8}[a-zA-Z]{1}+$/i";
+    if(preg_match($regex,$_REQUEST["ejercicio10"])&& comprobarDNINumero($_REQUEST["ejercicio10"])){
+        echo "Ejercicio 10 es valido<br/>";
     }else{
-        echo "Ejercicio 10 no es verdadero<br/>";
+        echo "Ejercicio 10 no es valido<br/>";
     }
+}
+function comprobarDNINumero($dni){
+    $letras = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
+    $dniPartido= str_split($dni);
+    $letra = $dniPartido[count($dniPartido)-1];
+    $letra = strtoupper($letra);
+    $numero="";
+    for ($i=0; $i < 8; $i++) { 
+        $numero = $numero.$dniPartido[$i];
+    }
+    $numero = intval($numero);
+
+    if($letra == $letras[$numero%23]){
+        return true;
+    }
+    return false;
 }
 ?>
 <html lang="en">
