@@ -5,7 +5,6 @@ de error maquetada con tal fin, llamada error.php. Si lo es, redirigirá
 la página a un tercer script llamado calculos.php y almacenará la sesión 
 como usuario autenticado.*/
 
-
 ?>
 <html lang="en">
 <head>
@@ -16,8 +15,8 @@ como usuario autenticado.*/
 </head>
 <body>
     
-    <h1>Libros:</h1>
-    <form method="post">
+    <h1>Auntentificación:</h1>
+    <form method="get" action="./php/validador.php">
     <!--1) Crea un formulario que permita introducir usuario y contraseña.-->
         <label for="usuario">Usuario:</label>
         <input type="text" id="usuario" name="usuario"><br>
