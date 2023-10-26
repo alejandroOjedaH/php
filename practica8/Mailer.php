@@ -24,7 +24,7 @@ class Mailer{
             $this -> mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $this -> mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $this -> mail->Username   = 'limonmagico1@gmail.com';                     //SMTP username
-            $this -> mail->Password   = 'khuc itpz tgoj gmez';                               //SMTP password
+            $this -> mail->Password   = 'imlp ubvo mxwh tiqd';                               //SMTP password
             $this -> mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
             $this -> mail->Port       = 587;
 
@@ -36,6 +36,7 @@ class Mailer{
             if($file!=null){
                 $this -> mail->addAttachment($file);
             }
+            $this -> mail->Body = 'Buenas inserte aqui nombre';
             $this->mail->send();
             echo 'Message has been sent';
         } catch (Exception $e) {
