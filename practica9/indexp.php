@@ -62,7 +62,12 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $gestorLibro;
-$libro = new Libro("Pedro", 130, new DateTime('2000-01-01'), false);
+
+$libro = new Libro("El nombre del viento", 220, new DateTime('2000-01-01'), true);
+$libroBorrar = new Libro();
+$libroBorrar->setId(12);
+$libroModificar = new Libro("El capitan vs Sunflower",200,new DateTime(),false);
+$libroModificar->setId(13);
 
 try {
      $con = new PDO("mysql:host=$servername;dbname=phpmyadmin", $username, $password);
@@ -70,7 +75,20 @@ try {
      $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
      echo "Connected successfully";
      $gestorLibro = new GestorLibro($con);
-     echo $gestorLibro -> insert($libro);
+     
+     //echo $gestorLibro -> insert($libro);
+     //echo $gestorLibro -> delete($libroBorrar);
+     //echo $gestorLibro -> update($libroModificar, $libroModificar -> getId());
+     mostrarSelect($gestorLibro-> table());
 } catch(PDOException $e) {
      echo "Connection failed: " . $e->getMessage();
+}
+
+function mostrarSelect($result){
+     foreach ($result as $row) {
+          print $row['nombre'] . "\t";
+          print $row['pag_num'] . "\t";
+          print $row['fecha_publicacion'] . "\t";
+          print $row['leido'] . "<br>";
+      }
 }

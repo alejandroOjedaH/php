@@ -3,17 +3,17 @@
 
 class Libro{
     private int $id;
-    private string $nombre;
-    private int $num_paginas;
-    private DateTime $fecha_publicacion;
-    private bool $leido;
+    private $nombre;
+    private  $num_paginas;
+    private $fecha_publicacion;
+    private $leido;
 
     /**
      * Get the value of nombre
      *
      * @return string
      */
-    public function getNombre(): string {
+    public function getNombre() {
         return $this->nombre;
     }
 
@@ -34,7 +34,7 @@ class Libro{
      *
      * @return int
      */
-    public function getId(): int {
+    public function getId(){
         return $this->id;
     }
 
@@ -55,7 +55,7 @@ class Libro{
      *
      * @return int
      */
-    public function getNumPaginas(): int {
+    public function getNumPaginas() {
         return $this->num_paginas;
     }
 
@@ -76,7 +76,7 @@ class Libro{
      *
      * @return DateTime
      */
-    public function getFechaPublicacion(): DateTime {
+    public function getFechaPublicacion() {
         return $this->fecha_publicacion;
     }
 
@@ -97,7 +97,7 @@ class Libro{
      *
      * @return bool
      */
-    public function getLeido(): bool {
+    public function getLeido() {
         return $this->leido;
     }
 
