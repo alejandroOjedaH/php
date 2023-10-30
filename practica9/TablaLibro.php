@@ -26,7 +26,7 @@ try {
         echo "<a href=\"./EliminarFila.php?id=".$row['id']."\">Borrar</a>";
         echo "</td>";
         echo "<td>";
-        echo "<a href=\"./ModificarFila.php\">Modificar</a>";
+        echo "<a href=\"./ModificarFila.php?id=".$row['id']."&nombre=".$row['nombre']."&pag=".$row['pag_num']."&fecha=".$row['fecha_publicacion']."&leido=".$row['leido']."\">Modificar</a>";
         echo "</td>";
         echo "</tr>";
     }

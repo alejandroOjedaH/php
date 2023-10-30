@@ -77,9 +77,10 @@ try {
      $gestorLibro = new GestorLibro($con);
      
      //echo $gestorLibro -> insert($libro);
-     //echo $gestorLibro -> delete($libroBorrar);
+     //echo $gestorLibro -> delete($libroBorrar -> getId());
      //echo $gestorLibro -> update($libroModificar, $libroModificar -> getId());
-     mostrarSelect($gestorLibro-> table());
+     //mostrarSelect($gestorLibro-> table());
+     $gestorLibro-> agregarInserts();
 } catch(PDOException $e) {
      echo "Connection failed: " . $e->getMessage();
 }
