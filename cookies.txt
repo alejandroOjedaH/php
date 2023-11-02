@@ -1,0 +1,12 @@
+setcookie("TestCookie", $value);
+setcookie("TestCookie", $value, time()+3600);  /* expira en 1 hora */
+setcookie("TestCookie", $value, time()+3600, "/~rasmus/", "example.com", 1);
+
+
+<?php
+// Imprime una cookie individual
+echo $_COOKIE["TestCookie"];
+
+// Otra forma de depurar/prueba es ver todas las cookies
+print_r($_COOKIE);
+?>
