@@ -1,0 +1,47 @@
+CREATE TABLE `restaurante` (
+  `codRes` int(11) NOT NULL AUTO_INCREMENT,
+  `correo` varchar(100) NOT NULL,
+  `clave` varchar(100) NOT NULL,
+  `direccion` varchar(100) DEFAULT NULL,
+  `cp` int(11) DEFAULT NULL,
+  `pais` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`codRes`),
+  UNIQUE KEY `Restaurante_un` (`correo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `categoria` (
+  `codCat` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`codCat`),
+  UNIQUE KEY `Categoria_un` (`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `pedido` (
+  `codPed` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` date DEFAULT NULL,
+  `enviado` tinyint(1) DEFAULT NULL,
+  `codRes` int(11) DEFAULT NULL,
+  PRIMARY KEY (`codPed`),
+  KEY `Pedido_FK` (`codRes`),
+  CONSTRAINT `Pedido_FK` FOREIGN KEY (`codRes`) REFERENCES `restaurante` (`codRes`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `producto` (
+  `codPro` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) DEFAULT NULL,
+  `descripcion` varchar(100) DEFAULT NULL,
+  `codCat` int(11) DEFAULT NULL,
+  PRIMARY KEY (`codPro`),
+  KEY `Producto_FK` (`codCat`),
+  CONSTRAINT `Producto_FK` FOREIGN KEY (`codCat`) REFERENCES `categoria` (`codCat`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `pedido_producto` (
+  `codPed` int(11) DEFAULT NULL,
+  `codPro` int(11) DEFAULT NULL,
+  KEY `Pedido_Producto_FK` (`codPed`),
+  KEY `Pedido_Producto_FK_1` (`codPro`),
+  CONSTRAINT `Pedido_Producto_FK` FOREIGN KEY (`codPed`) REFERENCES `pedido` (`codPed`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Pedido_Producto_FK_1` FOREIGN KEY (`codPro`) REFERENCES `producto` (`codPro`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
