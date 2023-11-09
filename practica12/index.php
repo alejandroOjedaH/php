@@ -11,7 +11,7 @@
 <body>
     
     <h1>Auntentificación:</h1>
-    <form method="get" action="php/validador.php">
+    <form method="post" action="php/validador.php">
         <label for="usuario">Usuario:</label>
         <input type="text" id="usuario" name="usuario"><br>
         <label for="contrasenna">Contraseña:</label>

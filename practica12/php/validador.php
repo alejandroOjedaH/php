@@ -18,9 +18,10 @@ try {
 if(isset($_REQUEST["usuario"]) && isset($_REQUEST["contrasenna"])){
     foreach($gestorUsuario->getUsuario($_REQUEST["usuario"], $_REQUEST["contrasenna"]) as $row){
         if(isset($row["correo"]) && isset($row["clave"])){
-            $_SESSION["correo"] = $row["correo"];
+            $_SESSION["username"] = $row["correo"];
             $_SESSION["clave"] = $row["clave"];
             $_SESSION["logeado"] = true;
+            $_SESSION["carrito"] = [];
             header("Location: ./categoria.php");
             die;
         }

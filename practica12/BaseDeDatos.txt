@@ -67,3 +67,16 @@ insert into tienda.restaurante (correo, clave, direccion, cp, pais) values ('enc
 insert into tienda.categoria (nombre,descripcion) values ('con', 'Bebidas con alohol');
 insert into tienda.categoria (nombre,descripcion) values ('sin', 'Bebidas sin alohol');
 insert into tienda.categoria (nombre,descripcion) values ('comida', 'Alimentos muy ricos');
+
+insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Vodka', 'Destilado de patata', 1.3, 30,1);
+insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Whiskey', 'La cosa esta de los Irlandeses', 5, 20, 1);
+insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Ron', 'Eso de los piratas', 3.6, 10, 1);
+
+insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Cocacola', 'Desatasca-bateres', 3, 25,2);
+insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Bitter kas', 'God tier', 5.8, 20, 2);
+insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Gaseosa', 'Master mind tier', 2.6, 90, 2);
+
+insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Bacalo', 'Dime quien corta el bacalao', 2, 25,3);
+insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Tortilla', 'La tortilla la hago yo', 3.1, 20, 3);
+insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Caracoles en escabeche', 'Que es eso', 5, 40, 3);
+
