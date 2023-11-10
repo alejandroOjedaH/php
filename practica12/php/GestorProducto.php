@@ -8,7 +8,18 @@ use PDOException;
 class GestorProducto{
     
     private $db;
-    
+    function getProducto($producto){
+        $result= null;
+        try{
+            $sql = "select * from tienda.producto p where p.codPro = ".$producto.";";
+            $result = $this->db->query($sql);
+            
+            return $result;
+        }catch(Exception $e){
+            echo $e;
+            return false;
+        }
+    }
     function getProductos($categoria){
         $result= null;
         try{

@@ -19,7 +19,6 @@ foreach($gestorCategoria->getCategoria($categoria) as $category){
     echo "<h1>".$category["nombre"]."</h1>";
 }
 ?>
-<form method="post" action="./aniadir.php">
     <table>
         <tr>
             <th>Nombre</th>
@@ -27,19 +26,19 @@ foreach($gestorCategoria->getCategoria($categoria) as $category){
             <th>Peso</th>
             <th>Cantidad</th>
         </tr>
-        <?php
+<?php
         
-            foreach($gestorProducto ->getProductos($categoria) as $producto){
-                echo "<tr>";
-                echo "<td>".$producto["nombre"]."</td>";
-                echo "<td>".$producto["descripcion"]."</td>";
-                echo "<td>".$producto["peso"]."</td>";
-                echo "<td>".$producto["stock"]."</td>";
-                echo "<td><input type=\"number\" min=\"0\" id=\"".$producto["codCat"]."\"></td>";
-                echo "<td><input type=\"submit\" value=\"Comprar\"";
-                echo "</tr>";
-            }
-        ?>
-
-    </table>
-</form>
+    foreach($gestorProducto ->getProductos($categoria) as $producto){
+        echo "<form method=\"post\" action=\"aniadir.php?category=1&id=".$producto["codPro"]."\">";
+        echo "<tr>";
+        echo "<td>".$producto["nombre"]."</td>";
+        echo "<td>".$producto["descripcion"]."</td>";
+        echo "<td>".$producto["peso"]."</td>";
+        echo "<td>".$producto["stock"]."</td>";
+        echo "<td><input type=\"number\" min=\"0\" id=\"cantidad\" name=\"cantidad\"></td>";
+        echo "<td><input type=\"submit\" value=\"Comprar\"</td>";
+        echo "</tr>";
+        echo "</form>";
+    }
+?>
+</table>
