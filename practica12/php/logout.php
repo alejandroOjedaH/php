@@ -1,10 +1,13 @@
 <?php
 session_start();
-if ($_SESSION["logeado"]==true){
+if ($_SESSION["logeado"]!=true){
     header("Location: ../index.php");
     die;
 }
-session_destroy();
+if(session_destroy()){
+    echo "La sesion se cerro con exito";
+}else{
+    echo "No se puedo cerrar la sesion";
+}
 
-header("Location: ../index.php");
-die;
+echo "<br><a href=\"../index.php\">Volver al login</a>";

@@ -63,10 +63,13 @@ CREATE TABLE `pedido_producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 insert into tienda.restaurante (correo, clave, direccion, cp, pais) values ('encargado@admin.com', 'admin', 'Calle no se que',26087,'España');
+insert into tienda.restaurante (correo, clave, direccion, cp, pais) values ('lombproyecto@gmail.com', 'admin', 'esta',32311,'España');
 
-insert into tienda.categoria (nombre,descripcion) values ('con', 'Bebidas con alohol');
-insert into tienda.categoria (nombre,descripcion) values ('sin', 'Bebidas sin alohol');
-insert into tienda.categoria (nombre,descripcion) values ('comida', 'Alimentos muy ricos');
+insert into tienda.categoria (nombre,descripcion) values ('Alcohol', 'Bebidas con alohol');
+insert into tienda.categoria (nombre,descripcion) values ('Sin alcohol', 'Bebidas sin alohol');
+insert into tienda.categoria (nombre,descripcion) values ('Comida', 'Alimentos muy ricos');
+
+-- Segunda tanda
 
 insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Vodka', 'Destilado de patata', 1.3, 30,1);
 insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Whiskey', 'La cosa esta de los Irlandeses', 5, 20, 1);
@@ -79,4 +82,5 @@ insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Gase
 insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Bacalo', 'Dime quien corta el bacalao', 2, 25,3);
 insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Tortilla', 'La tortilla la hago yo', 3.1, 20, 3);
 insert into tienda.producto (nombre,descripcion,peso,stock,codCat) values ('Caracoles en escabeche', 'Que es eso', 5, 40, 3);
+
 

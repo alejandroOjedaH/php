@@ -10,12 +10,12 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 class Mailer{
     private $mail;
     
-    public function send($from,$to,$cc=null,$file=null){
+    public function send($from,$to,$mesage,$cc=null,$file=null){
         $this->mail = new PHPMailer(true);
         try {
             //Server settings
@@ -24,7 +24,7 @@ class Mailer{
             $this -> mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $this -> mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $this -> mail->Username   = '';                     //SMTP username
-            $this -> mail->Password   = 'imlp ubvo mxwh tiqd';                               //SMTP password
+            //$this -> mail->Password   = 'nzwq sjcm pkfc tipv ';                               //SMTP password
             $this -> mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
             $this -> mail->Port       = 587;
 
@@ -36,7 +36,7 @@ class Mailer{
             if($file!=null){
                 $this -> mail->addAttachment($file);
             }
-            $this -> mail->Body = 'Buenas inserte aqui nombre';
+            $this -> mail->Body = $mesage;
             $this->mail->send();
             echo 'Message has been sent';
         } catch (Exception $e) {
