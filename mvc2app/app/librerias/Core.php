@@ -11,7 +11,7 @@ formato de la url: BASE_DIR/controlador/metodo/parametro
 
 class Core{
     //controlador base o por defecto
-    protected $controladorActual = 'login';
+    protected $controladorActual = 'paginas';
     protected $metodoActual = 'index';
     protected $parametros = [];
     public $url = '';

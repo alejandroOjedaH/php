@@ -10,7 +10,7 @@ class Articulo{
     }
 
     public function obtenerArticulos(){
-        $this->bd->query("SELECT * FROM restaurante");
+        $this->bd->query("SELECT * FROM articulos");
         return $this->bd->registros();
     }
 }

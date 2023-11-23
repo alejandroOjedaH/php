@@ -1,7 +1,7 @@
 <?php
 
-    class ArticulosControlador extends Controlador{
-        protected $articuloModelo;
+    class EjemploControlador extends Controlador{
+
         public function __construct(){
             $this->articuloModelo = $this->modelo('Articulo');
             //echo 'Controlador páginas cargado'.'<br>';

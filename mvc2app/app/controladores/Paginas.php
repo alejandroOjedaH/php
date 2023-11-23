@@ -8,19 +8,9 @@
         public function index(){
 
             $datos = [
-                'titulo' => NOMBRESITIO
+                'titulo' => 'ED 23-24',
             ];
 
             $this->vista('paginas/inicio', $datos);    
         }
-
-        public function login(){
-
-            $datos = [
-                'titulo' => 'Login'
-            ];
-
-            $this->vista('paginas/login', $datos);    
-        }
-        
     }
