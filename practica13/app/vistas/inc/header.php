@@ -1,2 +1,2 @@
 <?php
-echo "Usuario: ".$_SESSION["username"]." <a href=\"./categoria.php\">Home</a> <a href=\"./carrito.php\">Ver carrito</a> <a href=\"logout.php\">Cerrar Sesión</a>";
+echo "Usuario: ".$_SESSION["username"]." <a href=\"".RUTA_URL."categorias\">Home</a> <a href=\"".RUTA_URL."carrito\">Ver carrito</a> <a href=\"".RUTA_URL."logout\">Cerrar Sesión</a>";
