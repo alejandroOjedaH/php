@@ -10,10 +10,12 @@ class carritomodelo{
     }
 
     private function validarSesion(){
-        session_start();
-        if ($_SESSION["logeado"]!=true){
-            header("Location: ".RUTA_URL);
-            die;
+        if(!isset($_SESSION)){
+            session_start();
+            if ($_SESSION["logeado"]!=true){
+                header("Location: ".RUTA_URL);
+                die;
+            }
         }
     }
 

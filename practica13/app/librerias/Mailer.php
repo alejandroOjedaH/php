@@ -1,16 +1,8 @@
-<?php namespace Mailer;
-/*    
-    4) Crea una clase PHP propia llamada Mailer (emplea buenas prácticas, 
-    asígnale un namespace, llama adecuadamente a PHPMailer, etc) que contenga 
-    un método para enviar emails, pasándole en la cabecera el remitente, 
-    el destinatario, destinatario CC, y el path de un documento para adjuntar,
-    teniendo en cuenta que los dos últimos parámetros pueden ser nulos. 
-    
-    5) Instancia la clase Mailer y envía distintos emails, verificando que llegan adecuadamente.*/
+<?php
+require_once (RUTA_APP."/../vendor/autoload.php");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-require '../vendor/autoload.php';
 
 class Mailer{
     private $mail;
@@ -19,12 +11,12 @@ class Mailer{
         $this->mail = new PHPMailer(true);
         try {
             //Server settings
-            $this -> mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $this -> mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
             $this -> mail->isSMTP();                                            //Send using SMTP
             $this -> mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $this -> mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            //$this -> mail->Username   = '';                     //SMTP username
-            //$this -> mail->Password   = 'nzwq sjcm pkfc tipv ';                               //SMTP password
+            $this -> mail->Username   = 'lombproyecto@gmail.com';                     //SMTP username
+            $this -> mail->Password   = 'nzwq sjcm pkfc tipv';                               //SMTP password
             $this -> mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
             $this -> mail->Port       = 587;
 

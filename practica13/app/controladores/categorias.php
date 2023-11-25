@@ -12,9 +12,9 @@
                 $this->vista('paginas/productosvista', $datos); 
             return;
             }
-
-           $this->vista('paginas/categoriasvista', []);
-           return;  
+            $datos = $this->categoriasmodelo->categorias();
+            $this->vista('paginas/categoriasvista', $datos);
+            return;  
         }
 
         public function agregar(){

@@ -28,4 +28,4 @@
     }
     ?>
 </table>
-<a href="./procesarPedido.php">Realizar Pedido</a>
+<a href="./pedido">Realizar Pedido</a>

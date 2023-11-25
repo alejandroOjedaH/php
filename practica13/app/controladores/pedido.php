@@ -2,12 +2,15 @@
 
     class pedido extends Controlador{
         private $pedidomodelo;
+        private $carritomodelo;
         public function __construct(){
             $this->pedidomodelo = $this->modelo('pedidomodelo');
+            $this->carritomodelo = $this->modelo('carritomodelo');
         }
 
         public function index(){
-            $datos = $this->pedidomodelo->productos();
+            $this->pedidomodelo->productos();
+            $datos = $this->carritomodelo->productos();
             $this->vista('paginas/carritovista', $datos);
             return;  
         }

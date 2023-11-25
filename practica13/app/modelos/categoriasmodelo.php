@@ -10,13 +10,20 @@ class categoriasmodelo{
     }
 
     private function validarSesion(){
-        session_start();
-        if ($_SESSION["logeado"]!=true){
-            header("Location: ".RUTA_URL);
-            die;
+        if(!isset($_SESSION)){
+            session_start();
+            if ($_SESSION["logeado"]!=true){
+                header("Location: ".RUTA_URL);
+                die;
+            }
         }
     }
 
+    public function categorias(){
+        $this->bd->query("select * from tienda.categoria c;");
+        return $this->bd->registros();
+    }
+    
     public function productos($id){
         $_SESSION['paginaactual'] =$id;
         $datos = ["categoria"];

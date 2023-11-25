@@ -13,7 +13,7 @@ define('RUTA_APP', dirname(dirname(__FILE__)));
 
 //Ruta url Ejemplo: http://localhost/ud5/mvc2app
 //define ('RUTA_URL', '_URL_');
-define ('RUTA_URL', 'http://localhost:85/php/practica13/');
+define ('RUTA_URL', 'http://localhost/php/practica13/');
 
 //define ('NOMBRESITIO', '_NOMBRE_SITIO');
 define ('NOMBRESITIO', 'Practica 13');
