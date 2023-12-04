@@ -5,7 +5,6 @@ class categoriasmodelo{
     
     public function __construct()
     {
-        $this->validarSesion();
         $this->bd = new Db();
     }
 

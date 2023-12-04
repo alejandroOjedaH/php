@@ -13,10 +13,13 @@ define('RUTA_APP', dirname(dirname(__FILE__)));
 
 //Ruta url Ejemplo: http://localhost/ud5/mvc2app
 //define ('RUTA_URL', '_URL_');
-define ('RUTA_URL', 'http://localhost/php/practica14/apirest');
+define ('RUTA_URL', 'http://localhost/php/practica14/');
 
 //define ('NOMBRESITIO', '_NOMBRE_SITIO');
-define ('NOMBRESITIO', 'Practica 13');
+define ('NOMBRESITIO', 'Practica 14');
+
+
+define ('JWTKEY', bin2hex(random_bytes(32)));
 
 // Cargar archivo INI si es necesario.
 //$config = parse_ini_file(RUTA_APP . '/config/config.ini', true);
