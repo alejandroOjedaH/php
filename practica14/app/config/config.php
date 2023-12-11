@@ -19,7 +19,7 @@ define ('RUTA_URL', 'http://localhost/php/practica14/');
 define ('NOMBRESITIO', 'Practica 14');
 
 
-define ('JWTKEY', bin2hex(random_bytes(32)));
+define ('JWTKEY', "dfu438ry8b8qdb91nsdf1831ads34");
 
 // Cargar archivo INI si es necesario.
 //$config = parse_ini_file(RUTA_APP . '/config/config.ini', true);
