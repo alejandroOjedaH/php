@@ -4,6 +4,7 @@
         private $categoriasmodelo;
         public function __construct(){
             $this->categoriasmodelo = $this->modelo('categoriasmodelo');
+            $this->categoriasmodelo->validarSesion();
         }
 
         public function index($cat = null){

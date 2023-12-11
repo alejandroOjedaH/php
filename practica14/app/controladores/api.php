@@ -42,8 +42,35 @@ class api extends Controlador{
         }
     }
     public function categorias(){
-        $datos = $this->categoriasmodelo->categorias();
-        return json_encode($datos);
+        if($_SERVER["REQUEST_METHOD"]=="GET"){
+            $datos = $this->categoriasmodelo->categorias();
+            $json=[];
+            foreach ($datos as $categoria) {
+                array_push($json,$categoria["nombre"]);
+            }
+            echo json_encode($json);
+        }
+    }
 
+    public function productos($cat=null){
+        if($_SERVER["REQUEST_METHOD"]=="GET"){
+            if($cat !== null){
+                $datos = $this->categoriasmodelo->productos($cat);
+                $json=[];
+                foreach ($datos['productos'] as $producto) {
+                    array_push($json,$producto["nombre"]);
+                }
+                echo json_encode($json);
+            }
+        }
+    }
+
+    public function pedidos($res){
+        if($_SERVER["REQUEST_METHOD"]=="GET"){
+            if($res !== null){
+                $datos = $this->categoriasmodelo->devolverPedidosPorRestaurante($res);
+                echo json_encode($datos);
+            }
+        }
     }
 }

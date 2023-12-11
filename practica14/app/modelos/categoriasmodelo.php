@@ -8,7 +8,7 @@ class categoriasmodelo{
         $this->bd = new Db();
     }
 
-    private function validarSesion(){
+    public function validarSesion(){
         if(!isset($_SESSION)){
             session_start();
             if ($_SESSION["logeado"]!=true){
@@ -54,5 +54,23 @@ class categoriasmodelo{
                 $_SESSION["carrito"][$idPro]= intval($_REQUEST["cantidad"],$base = 10);
             }
         }
+    }
+
+    public function devolverPedidosPorRestaurante($id){
+        $guardarPedidos =[];
+        $this->bd->query("select * from tienda.pedido p where p.codRes = ".$id.";");
+        $pedidos = $this->bd->registros();
+
+        foreach($pedidos as $pedi){
+            $guardarProductos = [];
+            $this->bd->query("select * from tienda.pedido_producto ped inner join tienda.producto pro on pro.codPro = ped.codPro where ped.codPed = ".$pedi["codPed"].";");
+            $productos = $this->bd->registros();
+
+            foreach($productos as $prod){
+                array_push($guardarProductos, $prod['nombre']);
+            }
+            $guardarPedidos[$pedi["codPed"]] = $guardarProductos;
+        }
+        return $guardarPedidos;
     }
 }
