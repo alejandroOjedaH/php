@@ -52,7 +52,7 @@ class api extends Controlador{
                 $datos = $this->categoriasmodelo->categorias();
                 $json=[];
                 foreach ($datos as $categoria) {
-                    array_push($json,$categoria);
+                    array_push($json,$categoria["nombre"]);
                 }
                 echo json_encode($json);
             }else{
@@ -73,7 +73,7 @@ class api extends Controlador{
                     $datos = $this->categoriasmodelo->productos($cat);
                     $json=[];
                     foreach ($datos['productos'] as $producto) {
-                        array_push($json,$producto);
+                        array_push($json,$producto["nombre"]);
                     }
                     echo json_encode($json);
                 }
@@ -134,13 +134,15 @@ class api extends Controlador{
         }
         return null;
     }
-    private function validarBearerToken(){
+    public function validarBearerToken(){
         $jwt = $this->getBearerToken();
         $secret = JWTKEY;
         try{
             JWT::decode($jwt,new Key($secret,'HS256'));
+            echo true;
             return true;
         }catch(Exception $e){
+            echo false;
             return false;
         }
     }
